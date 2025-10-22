@@ -2,36 +2,61 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Required for foreground services of type mediaProjection on Android 10 (API 29) and above -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Required specifically for foreground services with type mediaProjection on Android 15 (API 35) and above -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+
+    <!-- While the FGS type covers the declaration, CAPTURE_VIDEO_OUTPUT often relates to the actual media projection setup -->
+    <!--    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />-->
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-
-    <!-- Untuk Android 11+ jika ingin menyimpan di luar direktori aplikasi -->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"-->
-<!--        tools:ignore="ScopedStorage" />-->
+    <!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="Screenshot Smart">
 
+        <!--        <service-->
+        <!--            android:name=".FloatingWindowService"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="false"-->
+        <!--            android:foregroundServiceType="mediaProjection"-->
+        <!--            tools:replace="android:foregroundServiceType"-->
+        <!--            />-->
+
         <service
             android:name=".FloatingWindowService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="mediaProjection" />
+            android:foregroundServiceType="dataSync" />
+
+        <!--        <service-->
+        <!--            android:name=".ScreenRecordingService"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="false"-->
+        <!--            android:foregroundServiceType="mediaProjection"-->
+        <!--            tools:replace="android:foregroundServiceType" />-->
 
         <service
             android:name=".ScreenRecordingService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="mediaProjection" />
+            android:foregroundServiceType="mediaProjection|microphone"
+            tools:replace="android:foregroundServiceType" />
 
         <activity
             android:name=".ScreenshotActivity"

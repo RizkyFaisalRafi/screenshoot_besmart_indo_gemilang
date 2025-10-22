@@ -31,7 +31,13 @@ class AboutAppPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Image.asset('assets/ss_logo.png', height: 100),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.asset(
+                      'assets/ss_logo2.png',
+                      height: 100,
+                    ),
+                  ),
                   const SizedBox(height: 10),
                   Text(
                     'Screenshot Smart',

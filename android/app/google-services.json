@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "820502718747",
+    "project_id": "screenshot-smart-app",
+    "storage_bucket": "screenshot-smart-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820502718747:android:d2b957b941a7c53ec78bbe",
+        "android_client_info": {
+          "package_name": "com.rifara.screenshootBesmartIndonesiaGemilang"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5BuI9vPodfX3wb1Z5kMokrK_j-6N0UuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820502718747:android:2e1476bf5092fac1c78bbe",
+        "android_client_info": {
+          "package_name": "com.rifara.screenshoot_besmart_indonesia_gemilang"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5BuI9vPodfX3wb1Z5kMokrK_j-6N0UuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

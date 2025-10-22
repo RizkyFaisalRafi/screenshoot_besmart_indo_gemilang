@@ -1,11 +1,4 @@
-//package com.rifara.screenshoot_besmart_indo_gemilang
-//
-//import io.flutter.embedding.android.FlutterActivity
-//
-//class MainActivity : FlutterActivity()
-
-
-package com.rifara.screenshoot_besmart_indonesia_gemilang
+package com.rifara.screenshootBesmartIndonesiaGemilang
 
 import android.app.Activity
 import android.content.Context
@@ -13,6 +6,7 @@ import android.content.Intent
 import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.provider.Settings
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -23,15 +17,12 @@ class MainActivity : FlutterActivity() {
     private var mediaProjectionManager: MediaProjectionManager? = null
     private val REQUEST_MEDIA_PROJECTION = 1
 
-    // untuk menyimpan callback result dari Flutter
     private var startRecordingResult: MethodChannel.Result? = null
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        // Inisialisasi MediaProjectionManager
-        mediaProjectionManager =
-            getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+        mediaProjectionManager = getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
 
         MethodChannel(
             flutterEngine.dartExecutor.binaryMessenger,
@@ -39,10 +30,7 @@ class MainActivity : FlutterActivity() {
         ).setMethodCallHandler { call, result ->
             when (call.method) {
                 "startService" -> {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(
-                            this
-                        )
-                    ) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
                         val intent = Intent(
                             Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                             Uri.parse("package:$packageName")
@@ -60,8 +48,6 @@ class MainActivity : FlutterActivity() {
                 }
 
                 "startRecording" -> {
-                    // --- UBAH BAGIAN INI ---
-                    // Simpan 'result' untuk digunakan di onActivityResult
                     this.startRecordingResult = result
                     startActivityForResult(
                         mediaProjectionManager?.createScreenCaptureIntent(),
@@ -97,13 +83,10 @@ class MainActivity : FlutterActivity() {
                 } else {
                     startService(serviceIntent)
                 }
-                // Kirim sinyal sukses kembali ke Flutter
                 startRecordingResult?.success(true)
             } else {
-                // Kirim sinyal gagal/dibatalkan ke Flutter
                 startRecordingResult?.success(false)
             }
-            // Kosongkan result setelah digunakan
             startRecordingResult = null
         } else if (requestCode == 123) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Settings.canDrawOverlays(this)) {

@@ -45,6 +45,7 @@
     <true/>
     <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
+
     <!-- Url Lancher Configuration -->
     <key>LSApplicationQueriesSchemes</key>
     <array>
@@ -52,5 +53,12 @@
       <string>mailto</string>
       <string>https</string>
     </array>
+
+    <!-- Bonjour Service Configuration -->
+    <key>NSBonjourServices</key>
+    <array>
+        <string>_dartobservatory._tcp</string>
+    </array>
+
   </dict>
 </plist>

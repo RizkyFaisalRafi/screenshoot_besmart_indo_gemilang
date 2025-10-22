@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:screenshoot_besmart_indonesia_gemilang/view/ui/about_app_page.dart';
-import 'package:screenshoot_besmart_indonesia_gemilang/view/ui/contact_us_page.dart';
+import 'package:screenshootBesmartIndonesiaGemilang/view/ui/about_app_page.dart';
+import 'package:screenshootBesmartIndonesiaGemilang/view/ui/contact_us_page.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
